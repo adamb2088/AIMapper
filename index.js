@@ -22,6 +22,7 @@ class MazeSolver {
             const [x, y] = stack.pop();
             if (x === endX && y === endY) {
                 path.push([x, y]);
+                console.log("solved");
                 return path;
             }
 
