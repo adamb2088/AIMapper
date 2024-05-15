@@ -256,7 +256,7 @@ const maze = [
 ];
 
 const solver = new MazeSolver(maze);
-const start = [1, 1];
-const end = [5, 1];
+const start = [1, 2];
+const end = [5, 2];
 const path = solver.solveMaze(start[0], start[1], end[0], end[1]);
 console.log("Path:", path);
