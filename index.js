@@ -20,6 +20,7 @@ class MazeSolver {
 
         while (stack.length > 0) {
             const [x, y] = stack.pop();
+
             if (x === endX && y === endY) {
                 path.push([x, y]);
                 console.log("solved");
@@ -256,7 +257,5 @@ const maze = [
 ];
 
 const solver = new MazeSolver(maze);
-const start = [1, 2];
-const end = [5, 2];
-const path = solver.solveMaze(start[0], start[1], end[0], end[1]);
-console.log("Path:", path);
+const path = solver.solveMaze(1, 1, 1, 3);
+console.log(path);
