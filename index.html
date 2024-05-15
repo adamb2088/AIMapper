@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grid Converter</title>
+  <title>InnerMaps</title>
   <style>
     .grid-container {
       display: grid;
@@ -29,20 +29,53 @@
 <body>
   <div id="grid-container" class="grid-container"></div>
   <script>
+    let redSquareIndex = null;
+    let blueSquareIndex = null;
+
     function createGridFromArray(array) {
       const gridContainer = document.getElementById('grid-container');
       gridContainer.innerHTML = '';
-
-      array.forEach(num => {
+      array.forEach((num, index) => {
         const gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
+        gridItem.addEventListener('click', () => {
+          if (num === 1) {
+            if (redSquareIndex === null) {
+              array[index] = 3;
+              redSquareIndex = index;
+            } else if (blueSquareIndex === null) {
+              array[index] = 4;
+              blueSquareIndex = index;
+            } else {
+              array[redSquareIndex] = 1;
+              array[blueSquareIndex] = 1;
+              array[index] = 3;
+              redSquareIndex = index;
+              blueSquareIndex = null;
+            }
+          } else if (num === 3) {
+            array[index] = 4;
+            blueSquareIndex = index;
+            array[redSquareIndex] = 1;
+            redSquareIndex = null;
+          } else if (num === 4) {
+            array[index] = 3;
+            redSquareIndex = index;
+            array[blueSquareIndex] = 1;
+            blueSquareIndex = null;
+          }
+          createGridFromArray(array);
+        });
         if (num === 1) {
           gridItem.style.backgroundColor = 'white';
+        } else if (num === 3) {
+          gridItem.style.backgroundColor = 'red';
+        } else if (num === 4) {
+          gridItem.style.backgroundColor = 'blue';
         }
         gridContainer.appendChild(gridItem);
       });
     }
-
 
     const binaryArray = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
