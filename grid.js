@@ -1,9 +1,12 @@
 let redSquareIndex = null;
 let blueSquareIndex = null;
-let redSquareX = null;
-let redSquareY = null;
-let blueSquareX = null;
-let blueSquareY = null;
+var redSquareX = null;
+var redSquareY = null;
+var blueSquareX = null;
+var blueSquareY = null;
+var scriptFinished = null;
+
+Boolean(scriptFinished);
 
 function createGridFromArray(array) {
     const gridContainer = document.getElementById("grid-container");
@@ -65,6 +68,15 @@ function createGridFromArray(array) {
             gridItem.style.backgroundColor = "blue";
         }
         gridContainer.appendChild(gridItem);
+        if (
+            redSquareX != null &&
+            redSquareY != null &&
+            blueSquareX != null &&
+            blueSquareY != null
+        ) {
+            scriptFinished = true;
+            console.log(scriptFinished);
+        }
     });
 }
 
