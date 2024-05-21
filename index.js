@@ -1,3 +1,4 @@
+//document.getElementById("solveMazeBtn").addEventListener("click", () => {
 class MazeSolver {
     constructor(maze) {
         this.maze = maze;
@@ -7,11 +8,11 @@ class MazeSolver {
             .fill(false)
             .map(() => new Array(this.cols).fill(false));
         this.directions = [
-            [0, -1],
             [1, 0],
             [0, 1],
             [-1, 0],
-        ]; // left, down, right, up
+            [0, -1],
+        ]; // down, right, up, left
     }
 
     solveMaze(startX, startY, endX, endY) {
@@ -56,7 +57,6 @@ class MazeSolver {
     }
 }
 
-// Example usage:
 const maze = [
     [
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -256,16 +256,14 @@ const maze = [
     ],
 ];
 
-document.getElementById("solveMazeBtn").addEventListener("click", () => {
-    const mazeSolver = new MazeSolver(maze);
-    const startX = redSquareX,
-        startY = redSquareY;
-    const endX = blueSquareX,
-        endY = blueSquareY;
-    const path = mazeSolver.solveMaze(startX, startY, endX, endY);
-    if (path.length > 0) {
-        console.log("Path: ", path);
-    } else {
-        console.log("No solution found.");
-    }
-});
+const solver = new MazeSolver(maze);
+const startX = redSquareX,
+    startY = redSquareY;
+const endX = blueSquareX,
+    endY = blueSquareY;
+
+const path = solver.solveMaze(1, 1, 1, 5);
+console.log("Path: ", path);
+console.log("StartX:", startX, "StartY:", startY, "EndX:", endX, "EndY:", endY);
+//});
+//startX, startY, endX, endY
