@@ -70,7 +70,81 @@
       justify-content: center;
       align-items: center;
       margin-top: 350px;
-      margin-left: 45%;
+      margin-left: 40%;
+    }
+
+    .reset {
+      margin-left: 25px;
+    }
+
+    header #showCardButton img {
+      width: 50px;
+      height: 50px;
+      z-index: 10;
+      margin: 0;
+      float: right;
+    }
+
+    #card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      text-align: left;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #card h2 {
+      text-align: center;
+    }
+
+    #showCardButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #a0ddff;
+      color: rgba(0, 0, 0, 0);
+      width: 50px;
+      height: 50px;
+      margin: 0;
+      padding: 10px;
+      padding-left: 85%;
+      float: right;
+    }
+
+    #card .close-btn {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      background: white;
+      border: none;
+      font-size: 18px;
+      font-weight: 400;
+      cursor: pointer;
+      color: black;
+      z-index: 10;
+      margin: 0;
+      padding: 0;
+      width: 25px;
+      height: 25px;
+      min-width: 10px;
+      border-radius: 0.5rem;
+      transition: ease 0.4s;
+      text-align: center;
+      display: flex;
+      padding: 5px;
+    }
+
+    #card .close-btn:hover {
+      background-color: red;
+      color: white;
     }
   </style>
 </head>
@@ -78,7 +152,16 @@
 <body>
   <header>
     <h1>InnerMaps</h1>
+    <button id="showCardButton">.<img src="info-circle.png" alt="info-circle"></button>
   </header>
+
+  <div id="card">
+    <button class="close-btn" onclick="closeCard()">&#10006;</button>
+    <h2>Instructions</h2>
+    <p>1) Select a starting point</p><br />
+    <p>2) Select a destination</p> <br />
+    <p>3) Click "Find Route" to find most effiecient route</p>
+  </div>
 
   <main>
     <div id="grid-container" class="grid-container"></div>
@@ -87,8 +170,23 @@
   <br />
 
   <section>
-    <button id="solveMazeBtn">Solve Maze</button>
+    <button id="solveMazeBtn">Find Route</button>
+    <button onclick="reloadPage()" class="reset">Reset</button>
   </section>
+  <script>
+    function reloadPage() {
+      location.reload();
+    }
+  </script>
+  <script>
+    document.getElementById('showCardButton').addEventListener('click', function () {
+      document.getElementById('card').style.display = 'block';
+    });
+
+    function closeCard() {
+      document.getElementById('card').style.display = 'none';
+    }
+  </script>
   <script src="grid.js"></script>
   <script src="index.js"></script>
 </body>

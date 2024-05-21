@@ -6,8 +6,6 @@ var blueSquareX = null;
 var blueSquareY = null;
 var scriptFinished = null;
 
-Boolean(scriptFinished);
-
 function createGridFromArray(array) {
     const gridContainer = document.getElementById("grid-container");
     gridContainer.innerHTML = "";
