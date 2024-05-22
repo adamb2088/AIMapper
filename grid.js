@@ -5,6 +5,7 @@ var redSquareY = null;
 var blueSquareX = null;
 var blueSquareY = null;
 var scriptFinished = null;
+let pathCoordinates;
 
 function createGridFromArray(array) {
     const gridContainer = document.getElementById("grid-container");
@@ -74,6 +75,13 @@ function createGridFromArray(array) {
             console.log(scriptFinished);
         }
     });
+}
+
+function updateArrayWithPath(pathCoordinates) {
+    for (const [x, y] of pathCoordinates) {
+        const index = y * 116 + x;
+        binaryArray[index] = 4;
+    }
 }
 
 const binaryArray = [
@@ -209,4 +217,8 @@ const binaryArray = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ];
 
+document.getElementById("solveMazeBtn").addEventListener("click", () => {
+    pathCoordinates = window.path;
+    updateArrayWithPath(pathCoordinates);
+});
 createGridFromArray(binaryArray);

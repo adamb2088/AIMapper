@@ -292,13 +292,13 @@ document.getElementById("solveMazeBtn").addEventListener("click", () => {
     const endRow = endY;
     const endCol = endX;
 
-    console.log("startx:", startX, "startY:", startY);
-    console.log("endx:", endX, "endY:", endY);
+    console.log("startx:", startY, "startY:", startX);
+    console.log("endx:", endY, "endY:", endX);
     const visited = new Array(maze.length)
         .fill(false)
         .map(() => new Array(maze[0].length).fill(false));
 
-    const path = findPath(maze, startRow, startCol, endRow, endCol, visited);
+    path = findPath(maze, startRow, startCol, endRow, endCol, visited);
 
     if (path) {
         console.log("Path found:", path);
